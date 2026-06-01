@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Prose from '../components/Prose.astro';
+import { SITE } from '../data/site';
+const updated = '2026-05-31';
+---
+<Layout title="Privacy Protocol" description="Privacy Policy for The Nerd Brigade and the Monitor app: what data we access, how we use it, retention, and your rights." path="/privacy">
+  <Nav />
+  <main class="flex-1">
+    <section class="mx-auto max-w-3xl px-5 py-16">
+      <span class="text-gold text-xs font-extrabold tracking-widest">◤ PRIVACY PROTOCOL</span>
+      <Prose class="mt-3">
+        <h1>Privacy Policy</h1>
+        <p><em>Last updated: {updated}</em></p>
+        <p>This Privacy Policy explains how <strong>The Nerd Brigade</strong> ("we", "us") collects, uses, and protects information in connection with our website and our Shopify application, <strong>Monitor</strong> (the "App"). By installing or using the App, you agree to this Policy.</p>
+
+        <h2>1. Information we access through Shopify</h2>
+        <p>When a merchant installs the App, Shopify grants us read-only access to the following, used solely to run store-health checks:</p>
+        <ul>
+          <li><code>read_orders</code> — to detect order-volume anomalies (e.g. a sudden drop versus your previous day or 7-day average).</li>
+          <li><code>read_products</code> — to validate product pages and discover variants for cart/checkout checks.</li>
+          <li><code>read_inventory</code> and <code>read_locations</code> — to validate inventory and shipping-rate checks.</li>
+        </ul>
+        <p>We do not sell this data and do not share it except as needed to provide the service (see "Service providers" below).</p>
+
+        <h2>2. Information you provide</h2>
+        <ul>
+          <li><strong>Monitoring configuration:</strong> storefront and product URLs, thresholds, and check settings.</li>
+          <li><strong>Notification recipients:</strong> names and email addresses you enter to receive alerts.</li>
+          <li><strong>Integration endpoints:</strong> webhook URLs and Slack webhook URLs you choose to configure.</li>
+          <li><strong>SMTP credentials (optional):</strong> if you configure your own mail server, the password is encrypted at rest using <strong>AES-256-GCM</strong> and is only decrypted server-side when sending your alerts.</li>
+        </ul>
+
+        <h2>3. Customer (buyer) data</h2>
+        <p>The App monitors storefront <em>health</em>; it does not collect or process your customers' personal data for our own purposes. Order information accessed via Shopify is used in aggregate for volume monitoring and is not used to build profiles or sold to anyone.</p>
+
+        <h2>4. How we use information</h2>
+        <p>We use the information above only to operate the App: running scheduled and on-demand checks, generating alerts and uptime statistics, delivering notifications through the channels you configure, and providing support.</p>
+
+        <h2>5. Where data is processed</h2>
+        <p>The App runs on <strong>Gadget.dev</strong> infrastructure (hosted on Amazon Web Services) in the <strong>United States</strong>. Information is stored and processed there.</p>
+
+        <h2>6. Service providers</h2>
+        <ul>
+          <li><strong>Shopify</strong> — the platform through which the App is installed and authorized.</li>
+          <li><strong>Gadget.dev</strong> — application hosting, database, and background jobs.</li>
+          <li><strong>Email, webhook, and Slack endpoints</strong> that you configure to receive alerts.</li>
+        </ul>
+
+        <h2>7. Data retention</h2>
+        <p>Check results and notification logs are automatically deleted after <strong>90 days</strong>. Your monitoring configuration is retained while the App is installed. When you uninstall the App, or upon a valid erasure request, your data is deleted in accordance with the compliance webhooks below.</p>
+
+        <h2>8. GDPR / CCPA compliance webhooks</h2>
+        <p>As required for Shopify apps, we implement Shopify's mandatory compliance webhooks:</p>
+        <ul>
+          <li><code>customers/data_request</code> — respond to a customer's request for their data.</li>
+          <li><code>customers/redact</code> — delete a specific customer's data on request.</li>
+          <li><code>shop/redact</code> — delete a shop's data after the App is uninstalled.</li>
+        </ul>
+
+        <h2>9. Security</h2>
+        <p>Data is transmitted over HTTPS and stored on managed infrastructure. Sensitive secrets such as SMTP passwords are encrypted at rest (AES-256-GCM). No method of transmission or storage is 100% secure, but we take reasonable measures to protect your information.</p>
+
+        <h2>10. Your rights</h2>
+        <p>Depending on your jurisdiction, you may have rights to access, correct, export, or delete your personal data, and to restrict or object to certain processing. To exercise these rights, contact us at <a href="mailto:TheNerd@thenerdbrigade.com">TheNerd@thenerdbrigade.com</a>.</p>
+
+        <h2>11. Changes to this Policy</h2>
+        <p>We may update this Policy from time to time. Material changes will be reflected by updating the "Last updated" date above.</p>
+
+        <h2>12. Contact</h2>
+        <p>Questions about this Policy? Reach The Nerd Brigade at <a href="mailto:TheNerd@thenerdbrigade.com">TheNerd@thenerdbrigade.com</a>.</p>
+      </Prose>
+    </section>
+  </main>
+  <Footer />
+</Layout>
