@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thenerdbrigade",
+  "compatibility_date": "2026-06-01",
+  // Static-only Worker: serve the Astro build output (dist/) as assets.
+  // No `main` worker / no SSR adapter — this site is fully static.
+  "assets": {
+    "directory": "./dist"
+  }
+}
