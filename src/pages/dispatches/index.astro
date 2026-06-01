@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 const entries = (await getCollection('dispatches')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
-const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
 <Layout title="Dispatches" description="Release notes and announcements from The Nerd Brigade." path="/dispatches">
   <Nav />
