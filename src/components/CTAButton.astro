@@ -6,4 +6,4 @@ const styles = variant === 'primary'
   ? 'bg-gradient-to-r from-pink to-purple text-white shadow-[3px_3px_0_var(--color-cyan)] hover:brightness-110'
   : 'border border-purple/50 text-fg hover:bg-panel';
 ---
-<a href={href} class={`${base} ${styles} ${className}`}><slot /></a>
+<a href={href} class={`${base} ${styles} ${className}`.trim()}><slot /></a>

@@ -5,7 +5,8 @@ export const SITE = {
   contactEmail: 'TheNerd@thenerdbrigade.com',
   // TODO: replace with the live Monitor App Store listing URL once approved.
   monitorAppStoreUrl: 'https://apps.shopify.com/',
-  year: new Date().getFullYear(),
+  // Fixed brand/founding year (used for "EST." and copyright). Bump if desired.
+  year: 2026,
 };
 
 // Themed primary navigation. `label` is themed; `plain` clarifies where it helps.

@@ -14,10 +14,10 @@ const current = Astro.url.pathname;
         <li>
           <a
             href={item.href}
-            aria-current={current.startsWith(item.href) ? 'page' : undefined}
+            aria-current={current === item.href || current.startsWith(item.href + '/') ? 'page' : undefined}
             class:list={[
               'text-muted hover:text-fg transition-colors',
-              { 'text-fg font-semibold': current.startsWith(item.href) },
+              { 'text-fg font-semibold': current === item.href || current.startsWith(item.href + '/') },
             ]}
           >{item.label}</a>
         </li>
