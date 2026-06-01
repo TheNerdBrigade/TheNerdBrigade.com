@@ -2,6 +2,7 @@
 import { NAV, SITE } from '../data/site';
 import Wordmark from './Wordmark.astro';
 const current = Astro.url.pathname;
+const isActive = (href: string) => current === href || current.startsWith(href + '/');
 ---
 <header class="border-b border-line bg-panel-2/70 backdrop-blur sticky top-0 z-20">
   <nav class="mx-auto max-w-6xl flex items-center gap-4 px-5 py-3">
@@ -9,23 +10,53 @@ const current = Astro.url.pathname;
       <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-purple-deep text-gold font-mono text-sm font-bold shadow-[2px_2px_0_var(--color-cyan)]">NB</span>
       <Wordmark class="text-sm" />
     </a>
+
+    <!-- Desktop nav -->
     <ul class="ml-auto hidden md:flex items-center gap-5 text-sm">
       {NAV.map((item) => (
         <li>
           <a
             href={item.href}
-            aria-current={current === item.href || current.startsWith(item.href + '/') ? 'page' : undefined}
+            aria-current={isActive(item.href) ? 'page' : undefined}
             class:list={[
               'text-muted hover:text-fg transition-colors',
-              { 'text-fg font-semibold': current === item.href || current.startsWith(item.href + '/') },
+              { 'text-fg font-semibold': isActive(item.href) },
             ]}
           >{item.label}</a>
         </li>
       ))}
     </ul>
+
     <a
       href={SITE.monitorAppStoreUrl}
-      class="ml-auto md:ml-0 rounded-md bg-gradient-to-r from-pink to-purple px-3 py-1.5 text-sm font-bold text-white shadow-[2px_2px_0_var(--color-cyan)] hover:brightness-110"
+      class="ml-auto md:ml-4 rounded-md bg-gradient-to-r from-pink to-purple px-3 py-1.5 text-sm font-bold text-white shadow-[2px_2px_0_var(--color-cyan)] hover:brightness-110"
+      aria-label="Enlist — install Monitor on Shopify"
     >Enlist →</a>
+
+    <!-- Mobile menu: native <details> disclosure, no JS required -->
+    <details class="md:hidden relative">
+      <summary
+        class="list-none marker:content-none [&::-webkit-details-marker]:hidden cursor-pointer rounded-md border border-line p-1.5 text-fg"
+        aria-label="Open navigation menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </summary>
+      <ul class="absolute right-0 mt-2 w-52 rounded-lg border border-line bg-panel-2 p-2 text-sm shadow-xl z-30">
+        {NAV.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'block rounded px-3 py-2 text-muted hover:bg-panel hover:text-fg',
+                { 'text-fg font-semibold': isActive(item.href) },
+              ]}
+            >{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </details>
   </nav>
 </header>
