@@ -1,0 +1,10 @@
+---
+// Placeholder brand mark. Final insignia is deferred; swap this component's
+// internals later without touching consumers.
+interface Props { class?: string }
+const { class: className = '' } = Astro.props;
+---
+<span class={`inline-flex items-baseline gap-1 font-extrabold tracking-wide ${className}`}>
+  <span class="text-fg">NERD</span>
+  <span class="text-gold">BRIGADE</span>
+</span>

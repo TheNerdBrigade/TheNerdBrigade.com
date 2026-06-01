@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CTAButton from '../components/CTAButton.astro';
+import BattalionCard from '../components/BattalionCard.astro';
+import { SITE } from '../data/site';
+---
+<Layout title={SITE.name} description="The Nerd Brigade builds small, sharp Shopify apps. First into the field: Monitor — 24/7 storefront health monitoring." path="/">
+  <Nav />
+  <main class="flex-1">
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 opacity-60" style="background:radial-gradient(900px 320px at 50% -10%, rgba(124,58,237,.45), transparent)"></div>
+      <div class="relative mx-auto max-w-4xl px-5 py-24 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-cyan/30 px-3 py-1 text-xs font-bold tracking-widest text-cyan">▸ ENLISTING NERDS · EST. {SITE.year}</span>
+        <h1 class="mt-5 text-4xl sm:text-5xl font-extrabold leading-tight">
+          An elite brigade of nerds,<br />building tools that <span class="text-gold">guard your store.</span>
+        </h1>
+        <p class="mx-auto mt-5 max-w-xl text-muted">We deploy small, focused apps for Shopify merchants — each one a battalion with a single mission. First into the field: <strong>Monitor</strong>.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <CTAButton href="/monitor">Deploy Monitor</CTAButton>
+          <CTAButton href="/docs" variant="ghost">Read the Field Manual</CTAButton>
+        </div>
+      </div>
+    </section>
+
+    <!-- BATTALIONS -->
+    <section class="mx-auto max-w-6xl px-5 pb-24">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-gold text-xs font-extrabold tracking-widest">◤ ACTIVE BATTALIONS</span>
+        <span class="flex-1 border-t border-dashed border-line"></span>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <BattalionCard icon="🛰️" title="Sentinel Battalion" codename="Monitor" status="ON DUTY" href="/monitor" cta="View battalion">
+          24/7 watch over storefront uptime, checkout, cart & order volume. Sounds the alarm before customers notice.
+        </BattalionCard>
+        <BattalionCard icon="🎖️" title="Recruiting" dashed>
+          More battalions are in basic training. Room to grow as we ship new apps.
+        </BattalionCard>
+        <BattalionCard icon="📖" title="Field Manual" href="/docs" cta="Open manual">
+          Setup guides and docs for getting any battalion combat-ready in minutes.
+        </BattalionCard>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

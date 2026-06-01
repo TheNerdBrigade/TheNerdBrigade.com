@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path-only canonical, e.g. "/monitor". Defaults to current path. */
+  path?: string;
+}
+const { title, description, path = Astro.url.pathname } = Astro.props;
+const canonical = new URL(path, SITE.url).href;
+const fullTitle = title === SITE.name ? title : `${title} · ${SITE.name}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="bg-ink text-fg min-h-screen flex flex-col">
+    <slot />
+  </body>
+</html>

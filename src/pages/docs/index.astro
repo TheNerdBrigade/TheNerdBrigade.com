@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const entries = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
+---
+<Layout title="Field Manual" description="Documentation and setup guides for Monitor and other Nerd Brigade apps." path="/docs">
+  <Nav />
+  <main class="flex-1">
+    <section class="mx-auto max-w-3xl px-5 py-16">
+      <span class="text-gold text-xs font-extrabold tracking-widest">◤ FIELD MANUAL</span>
+      <h1 class="mt-3 text-4xl font-extrabold">Field Manual</h1>
+      <p class="mt-3 text-muted">Everything you need to get a battalion combat-ready.</p>
+      <ul class="mt-8 space-y-3">
+        {entries.map((e) => (
+          <li class="rounded-xl border border-line bg-panel p-5">
+            <a href={`/docs/${e.id}`} class="font-bold text-fg hover:text-cyan">{e.data.title}</a>
+            {e.data.description && <p class="text-muted text-sm mt-1">{e.data.description}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

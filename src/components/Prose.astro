@@ -1,0 +1,20 @@
+---
+interface Props { class?: string }
+const { class: className = '' } = Astro.props;
+---
+<div class={`prose-brigade max-w-none ${className}`}>
+  <slot />
+</div>
+
+<style is:global>
+  .prose-brigade { color: var(--color-fg); line-height: 1.7; }
+  .prose-brigade h1 { font-size: 2rem; font-weight: 800; margin: 0 0 1rem; }
+  .prose-brigade h2 { font-size: 1.4rem; font-weight: 800; margin: 2rem 0 .75rem; color: var(--color-gold); }
+  .prose-brigade h3 { font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 .5rem; }
+  .prose-brigade p, .prose-brigade li { color: var(--color-muted); }
+  .prose-brigade a { color: var(--color-cyan); text-decoration: underline; }
+  .prose-brigade ul { padding-left: 1.25rem; list-style: disc; margin: .75rem 0; }
+  .prose-brigade strong { color: var(--color-fg); }
+  .prose-brigade code { font-family: var(--font-mono); background: var(--color-panel); padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+  .prose-brigade hr { border: none; border-top: 1px solid var(--color-line); margin: 2rem 0; }
+</style>

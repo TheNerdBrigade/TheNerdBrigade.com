@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Prose from '../components/Prose.astro';
+import { SITE } from '../data/site';
+const updated = '2026-05-31';
+---
+<Layout title="Rules of Engagement" description="Terms of Service for The Nerd Brigade and the Monitor Shopify app — subscriptions, acceptable use, liability, and governing law." path="/terms">
+  <Nav />
+  <main class="flex-1">
+    <section class="mx-auto max-w-3xl px-5 py-16">
+      <span class="text-gold text-xs font-extrabold tracking-widest">◤ RULES OF ENGAGEMENT</span>
+      <Prose class="mt-3">
+        <h1>Terms of Service</h1>
+        <p><em>Last updated: {updated}</em></p>
+        <p>These Terms of Service ("Terms") govern your use of the website and the <strong>Monitor</strong> application (the "App") provided by <strong>The Nerd Brigade</strong> ("we", "us"). By installing or using the App, you agree to these Terms.</p>
+
+        <h2>1. The service</h2>
+        <p>Monitor performs automated checks on a Shopify store's storefront — including uptime, cart and checkout flows, shipping rates, and order volume — and sends notifications when it detects potential problems.</p>
+
+        <h2>2. Subscriptions and billing</h2>
+        <p>The App is offered on monthly subscription tiers (Recruit, Squad, Platoon, and Battalion) based on monthly order volume. All billing is handled securely through Shopify's billing system under your Shopify account. Prices are in U.S. dollars and may change with notice.</p>
+
+        <h2>3. Acceptable use</h2>
+        <p>You agree to use the App only for monitoring stores you own or are authorized to manage, and not to misuse, reverse engineer, or attempt to disrupt the service or use it to monitor third-party sites without permission.</p>
+
+        <h2>4. Service is provided "as is" — best effort</h2>
+        <p>Monitoring is provided on a <strong>best-effort basis</strong>. While we work to detect issues quickly, we do not guarantee that the App will detect every problem, that checks or alerts will always be timely or delivered, or that the service will be uninterrupted or error-free. The App is a monitoring aid and is not a substitute for your own operational diligence.</p>
+
+        <h2>5. Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, The Nerd Brigade will not be liable for any indirect, incidental, special, or consequential damages, or for lost sales, revenue, or data, arising from your use of (or inability to use) the App — including any missed or delayed detection of downtime or other issues. Our total liability for any claim will not exceed the amount you paid for the App in the three (3) months preceding the claim.</p>
+
+        <h2>6. Termination</h2>
+        <p>You may stop using the App at any time by uninstalling it from your Shopify admin. We may suspend or terminate access for violation of these Terms. Upon uninstallation, your data is handled as described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+        <h2>7. Governing law</h2>
+        <p>These Terms are governed by the laws of the State of <strong>[STATE TO BE CONFIRMED]</strong>, United States, without regard to its conflict-of-laws rules.</p>
+
+        <h2>8. Changes to these Terms</h2>
+        <p>We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date above. Continued use of the App after changes constitutes acceptance.</p>
+
+        <h2>9. Contact</h2>
+        <p>Questions about these Terms? Contact us at <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</p>
+      </Prose>
+    </section>
+  </main>
+  <Footer />
+</Layout>
