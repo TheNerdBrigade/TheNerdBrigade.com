@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Prose from '../../components/Prose.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('dispatches');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Layout title={entry.data.title} description={entry.data.summary} path={`/dispatches/${entry.id}`}>
+  <Nav />
+  <main class="flex-1">
+    <section class="mx-auto max-w-3xl px-5 py-16">
+      <a href="/dispatches" class="text-cyan text-sm hover:underline">← Dispatches</a>
+      <p class="mt-4 text-xs text-muted">{fmt(entry.data.date)}</p>
+      <Prose class="mt-2"><Content /></Prose>
+    </section>
+  </main>
+  <Footer />
+</Layout>
