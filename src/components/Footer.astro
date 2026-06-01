@@ -1,0 +1,27 @@
+---
+import { NAV, LEGAL_NAV, SITE } from '../data/site';
+---
+<footer class="mt-auto border-t border-line bg-panel-2">
+  <div class="mx-auto max-w-6xl px-5 py-10 grid gap-8 sm:grid-cols-3 text-sm">
+    <div>
+      <p class="font-extrabold tracking-wide"><span class="text-fg">NERD</span> <span class="text-gold">BRIGADE</span></p>
+      <p class="mt-2 text-muted">{SITE.tagline}</p>
+    </div>
+    <div>
+      <p class="text-gold font-bold text-xs tracking-widest uppercase mb-3">Battalions</p>
+      <ul class="space-y-2">
+        {NAV.map((i) => <li><a class="text-muted hover:text-fg" href={i.href}>{i.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="text-gold font-bold text-xs tracking-widest uppercase mb-3">HQ</p>
+      <ul class="space-y-2">
+        {LEGAL_NAV.map((i) => <li><a class="text-muted hover:text-fg" href={i.href}>{i.label}</a></li>)}
+        <li><a class="text-muted hover:text-fg" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line">
+    <p class="mx-auto max-w-6xl px-5 py-4 text-xs text-muted">© {SITE.year} {SITE.name}. All rights reserved.</p>
+  </div>
+</footer>
