@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CTAButton from '../components/CTAButton.astro';
+import { SITE } from '../data/site';
+---
+<Layout title="The Brigade" description="The Nerd Brigade is a small studio shipping focused, dependable Shopify apps — built by nerds who sweat the details." path="/about">
+  <Nav />
+  <main class="flex-1">
+    <section class="mx-auto max-w-3xl px-5 py-20">
+      <span class="text-gold text-xs font-extrabold tracking-widest">◤ THE BRIGADE</span>
+      <h1 class="mt-3 text-4xl font-extrabold">Nerds. Organized. Deployed.</h1>
+      <div class="mt-6 space-y-5 text-muted leading-relaxed">
+        <p>The Nerd Brigade is a small studio with one rule: ship focused tools that do their job and stay out of the way. No bloat, no dark patterns — just dependable apps for Shopify merchants.</p>
+        <p>We organize our work like a brigade. Each app is a <strong class="text-fg">battalion</strong> with a single mission and a clear chain of command. Our first deployment, <strong class="text-fg">Monitor</strong> (the Sentinel Battalion), stands watch over storefront health so merchants find out about problems before their customers do.</p>
+        <p>Everything we build, we build to be quietly excellent. If something's wrong, we want you to hear it from us first.</p>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <CTAButton href="/monitor">Meet Monitor</CTAButton>
+        <CTAButton href={`mailto:${SITE.contactEmail}`} variant="ghost">Contact HQ</CTAButton>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
