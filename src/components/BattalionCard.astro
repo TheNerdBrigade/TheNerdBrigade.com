@@ -1,0 +1,25 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  codename?: string;
+  status?: string;
+  href?: string;
+  cta?: string;
+  dashed?: boolean;
+}
+const { icon, title, codename, status, href, cta, dashed = false } = Astro.props;
+---
+<div class:list={[
+  'relative rounded-xl bg-panel p-5',
+  dashed ? 'border border-dashed border-line' : 'border border-line',
+]}>
+  {status && (
+    <span class="absolute top-4 right-4 rounded-full bg-cyan/15 px-2 py-0.5 text-[10px] font-bold text-cyan">● {status}</span>
+  )}
+  <div class="text-2xl mb-2">{icon}</div>
+  <h3 class="font-extrabold text-lg">{title}</h3>
+  {codename && <p class="text-purple text-xs font-bold tracking-wide mb-2">CODENAME: {codename}</p>}
+  <p class="text-muted text-sm mt-1"><slot /></p>
+  {href && cta && <a href={href} class="mt-3 inline-block text-pink text-sm font-bold hover:underline">{cta} →</a>}
+</div>
