@@ -30,7 +30,7 @@ npm test         # structural + privacy-disclosure tests
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
 4. After the first deploy, add the custom domain under **Pages project → Custom domains**: add `thenerdbrigade.com` and `www.thenerdbrigade.com`. Because DNS is already on Cloudflare, the records and HTTPS are configured automatically.
-5. The existing `monitor-app.thenerdbrigade.com` subdomain (Gadget) is unaffected.
+5. The existing `monitor-app.thenerdbrigade.com` subdomain (the Monitor app, hosted separately) is unaffected.
 
 ## Open items
 
